@@ -1,0 +1,16 @@
+a*bb 
+
+Test Case	Expected Result	
+
+bbbb		Does not match	
+aaa		Does not match	
+baaabb		Does not match	
+aaabbb		Does not match	
+baaabb		Does not match	
+aaaab		Does not match	
+abbabb		Does not match	
+abb		Matches		
+aaaaabb		Matches		
+
+
+
