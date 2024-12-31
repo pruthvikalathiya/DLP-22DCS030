@@ -1,32 +1,66 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int main()
-{
-    string s;
-    cout<<"enter string:";
-    cin>>s;
-    cout<<"set starting set:";
-    int current_state;
-    cin>>current_state;
-    cout<<"set Acceptence test set:";
-    int A_state;
-    cin>>A_state;
-    int tarnsition[5][2]={{0,0},{2,3},{1,4},{4,1},{3,2}};
-    for(int i=0;i<s.length();i++)
-    {
-        int l=0;
-        if(s[i]=='a')
-        {
-            l=0;
-        }else{
-        l=1;
-        }
-        cout<<current_state<<" "<<s[i]<<" "<<l<<"= ";
-        current_state=tarnsition[current_state][l];
-        cout<<current_state<<endl;
+
+int main(){
+    int n_symbols;
+    cout << "Enter the number of Symbols:";
+    cin >> n_symbols;
+    char symbols[n_symbols];
+    cout << "Enter the Symbols:";
+    for (int i = 0; i < n_symbols; i++){
+        cin >> symbols[i];
     }
-    if(current_state==2)
-        cout<<"valid"<<endl;
-    else
-        cout<<"Not valid"<<endl;
+    int n_states,initial_state,final_state;
+    cout << "Enter the number of states:";
+    cin >> n_states;
+    int states[n_states];
+    for (int i = 0; i < n_states; i++){
+        states[i] = i+1;
+    }
+    cout << "Initial State:";
+    cin >> initial_state;
+    cout << "Final State:";
+    cin >> final_state;
+
+    cout << "Transition table (state to symbol -> states)" << endl;
+    int table[n_states][n_symbols];
+    for (int i = 0; i < n_states; i++){
+        for (int j = 0; j < n_symbols; j++){
+            cout << states[i] << " to " << symbols[j] << "->";
+            cin >> table[i][j];
+        }
+    }
+
+    string s;
+    cout << "Enter the string:";
+    cin >> s;
+    
+    int currState = initial_state;
+    bool isInvalid = false;
+    for (int i = 0; i < s.length(); i++){
+        int EleIndex;
+        for(int j = 0; j < n_symbols; j++){
+            cout << symbols[j] << s[i] << endl;
+             if(symbols[j] == s[i]){
+                EleIndex = j;
+                isInvalid=false;
+                break;
+            }
+            else{
+                isInvalid = true;
+            }
+        }
+        if(isInvalid) break;
+        currState = table[currState-1][EleIndex];
+        cout << currState << "  " << EleIndex << endl;
+    }
+    if(currState==final_state){
+        cout << "String is Valid!";
+    }
+    else{
+        cout << " String invalid!";
+    }
+    
+
+    return 0;
 }
