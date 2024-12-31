@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
-#include <cctype> // For isalpha and isalnum
+#include <cctype> 
 using namespace std;
 
 bool testCase3(const string& str) {
     if (str.empty()) return false;
-    if (!isalpha(str[0])) return false; // Check if the string starts with an alphabet
+    if (!isalpha(str[0])) return false; 
     for (char c : str) {
-        if (!isalnum(c)) return false; // Ensure all characters are alphanumeric
+        if (!isalnum(c)) return false; 
     }
     return true;
 }
