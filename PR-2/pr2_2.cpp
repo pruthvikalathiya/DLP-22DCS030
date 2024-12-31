@@ -4,7 +4,7 @@ using namespace std;
 
 bool testCase2(const string& str) {
     if (str.empty()) return false;
-    return (str[0] == str[str.length() - 1]); // Check if first and last letters are the same
+    return (str[0] == str[str.length() - 1]);
 }
 
 int main() {
