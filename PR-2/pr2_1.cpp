@@ -4,7 +4,7 @@ using namespace std;
 
 bool testCase1(const string& str) {
     size_t pos = str.find("011");
-    return pos != string::npos; // Return true if "011" is found
+    return pos != string::npos; 
 }
 
 int main() {
